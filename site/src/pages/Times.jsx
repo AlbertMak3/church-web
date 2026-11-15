@@ -1,36 +1,37 @@
 import { times } from '../content.js'
+import PageHero from '../components/PageHero.jsx'
+import { Icon } from '../components/Icons.jsx'
 
 export default function Times() {
   return (
-    <div className="wrap">
-      <div className="page-head">
-        <h1>聚會時間</h1>
-        <p>所有聚會都在同一個地方，歡迎隨時加入。</p>
-      </div>
+    <>
+      <PageHero title="聚會時間" sub="一同敬拜 · 一起成長" />
 
-      <section className="section">
-        <table className="times">
-          <thead>
-            <tr>
-              <th scope="col">時間</th>
-              <th scope="col">聚會</th>
-              <th scope="col">備註</th>
-            </tr>
-          </thead>
-          <tbody>
-            {times.map(t => (
-              <tr key={t.name}>
-                <td>{t.day} {t.time}</td>
-                <td>{t.name}</td>
-                <td>（待填）</td>
-              </tr>
-            ))}
-          </tbody>
-        </table>
-        <p style={{ marginTop: '1.5rem', color: 'var(--ink-soft)' }}>
-          公眾假期或颱風期間的聚會安排，會在 Instagram 公布。
-        </p>
-      </section>
-    </div>
+      <div className="wrap">
+        <section className="section" style={{ paddingTop: '1.75rem' }}>
+          <div className="panel">
+            <ul className="rows">
+              {times.map(t => (
+                <li className="row" key={t.name}>
+                  <Icon name={t.icon} className="row__icon" />
+                  <h3 className="row__name">{t.name}</h3>
+                  <p className="row__meta">{t.day}</p>
+                  <p className="row__meta"><span>{t.time}</span></p>
+                  <p className="row__meta row__venue">{t.venue}</p>
+                </li>
+              ))}
+            </ul>
+          </div>
+
+          <div className="notestrip">
+            <Icon name="info" />
+            <p>
+              歡迎所有弟兄姊妹及新朋友參加，一同在主裡相聚。
+              公眾假期或颱風期間的安排，會在 Instagram 公布。
+            </p>
+          </div>
+        </section>
+      </div>
+    </>
   )
 }

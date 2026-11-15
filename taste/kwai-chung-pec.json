@@ -1,0 +1,108 @@
+{
+  "source": "葵涌平安福音堂網站介面合集.png",
+  "kind": "image-collage",
+  "captured": "2026-11-15",
+  "canvas": { "width": 1536, "height": 1024, "panels": 5, "footerStrips": 1 },
+  "color": {
+    "sampled": {
+      "ground": "#f1e8e0",
+      "panel": "#fbf8f4",
+      "footerBand": "#f3e8de",
+      "ink": "#211814",
+      "inkSecondary": "#5b4e44",
+      "tan": "#a6784d",
+      "deepTan": "#8b5a2b",
+      "hairline": "#ddd0c2"
+    },
+    "shipped": {
+      "paper": "#f6efe7",
+      "panel": "#fffdfa",
+      "sand": "#f3e8de",
+      "ink": "#241a14",
+      "inkSoft": "#4f4338",
+      "link": "#6b4520",
+      "gold": "#a6784d",
+      "goldDeep": "#8b5a2b",
+      "line": "#e4d8c9"
+    },
+    "deviations": [
+      { "token": "accent text", "reference": "#a6784d", "shipped": "#6b4520", "reason": "3.40:1 fails 7:1 body text; tan kept decorative only" },
+      { "token": "button fill", "reference": "#af8250", "shipped": "#8b5a2b", "reason": "white on lighter tan is 3.88:1; deep tan is 5.84:1" },
+      { "token": "secondary text", "reference": "#5b4e44", "shipped": "#4f4338", "reason": "6.65:1 on the footer band; raised to 7.94:1" }
+    ],
+    "measured": [
+      { "pair": "ink on paper", "ratio": 14.94 },
+      { "pair": "ink on panel", "ratio": 16.78 },
+      { "pair": "ink on sand", "ratio": 14.12 },
+      { "pair": "soft on paper", "ratio": 8.40 },
+      { "pair": "soft on panel", "ratio": 9.43 },
+      { "pair": "soft on sand", "ratio": 7.94 },
+      { "pair": "link on paper", "ratio": 7.38 },
+      { "pair": "link on panel", "ratio": 8.28 },
+      { "pair": "white on hero scrim", "ratio": 8.41 },
+      { "pair": "white on gold button", "ratio": 5.84 }
+    ]
+  },
+  "typography": {
+    "families": {
+      "serif": ["Noto Serif TC", "Songti TC", "Songti SC", "PMingLiU", "serif"],
+      "sans": ["Noto Sans TC", "PingFang TC", "Microsoft JhengHei", "sans-serif"],
+      "brush": ["Kaiti TC", "Kaiti SC", "STKaiti", "DFKai-SB", "serif"]
+    },
+    "scale": [
+      { "role": "heroSlogan", "face": "brush", "px": "48–58", "weight": 400, "lineHeight": 1.35 },
+      { "role": "h1", "face": "serif", "px": "28–45", "weight": 600, "lineHeight": 1.4 },
+      { "role": "h2", "face": "serif", "px": "24–29", "weight": 600, "lineHeight": 1.4 },
+      { "role": "rowName", "face": "serif", "px": 21, "weight": 600, "lineHeight": 1.4 },
+      { "role": "body", "face": "sans", "px": 19, "weight": 400, "lineHeight": 1.75 },
+      { "role": "meta", "face": "sans", "px": "17–18", "weight": 400, "lineHeight": 1.6 }
+    ],
+    "rules": ["brush face used at exactly two places", "no weight below 400", "no uppercase Latin", "no letter-spacing"]
+  },
+  "space": {
+    "radius": { "card": 14, "pill": 999 },
+    "headerHeight": "64–72",
+    "heroHeight": "315–420",
+    "cardPadding": "20–24",
+    "sectionRhythm": "40–48",
+    "grids": { "quickLinks": 4, "serviceRow": "42px 1.1fr 1fr 1fr 1fr", "footer": "3 zones at 52em" },
+    "shadow": "0 1px 3px rgba(36,26,20,.05)"
+  },
+  "effects": { "gradients": 0, "animation": "none", "carousel": "none (reference has dots; rejected)", "hoverOnlyInfo": false },
+  "taste": [
+    {
+      "name": "Photography carries the emotion, colour carries nothing",
+      "trigger": "a church must feel warm without illustration and without faces",
+      "decision": "all warmth lives in full-bleed photos and a cream paper tone; interface stays within five flat colours and 1px rules",
+      "reason": "chrome warmth reads as decoration and dates; photo warmth reads as the place",
+      "evidence": "5 heroes, 5 photographs, 0 gradients; every UI surface is #f1e8e0, #fbf8f4 or #f3e8de"
+    },
+    {
+      "name": "Two families with a single brush exception",
+      "trigger": "Traditional Chinese titles need gravity, body copy needs 19px legibility",
+      "decision": "serif for titles and names, sans for anything longer than a line, brush used exactly twice",
+      "reason": "a brush face at 3 places is identity, at 20 places it is a gimmick and it breaks scanning",
+      "evidence": "願平安與你同在 appears in brush in the hero and the footer, never in nav, buttons or headings",
+      "restraintTradeoff": "reference could have set all five page titles in brush; it did not, which keeps service rows skimmable"
+    },
+    {
+      "name": "Pill buttons, because the audience is not 25",
+      "trigger": "most of the congregation is over 60 and presses buttons on a phone",
+      "decision": "every action is a 44–48px pill, filled tan primary, outlined secondary, never a bare text link",
+      "reason": "a capsule reads as pressable at arm's length and survives a 48px tap target without looking wrong",
+      "evidence": "4 pill CTAs across the panels, 0 primary actions as bare text"
+    },
+    {
+      "name": "The page structure is a questionnaire, not a brochure",
+      "trigger": "a visitor arrives with three questions: when, where, who are you",
+      "decision": "hero, then four index cards, then the service row in full; address never leaves the footer",
+      "reason": "a church site is interrogated rather than read, so each block ends one question",
+      "evidence": "times appear twice on the home panel; footer repeats address and phone on all five panels; every subpage carries a breadcrumb"
+    }
+  ],
+  "rejected": [
+    "carousel autoplay and pagination dots",
+    "3D and illustration",
+    "second accent colour (Facebook blue appears in the reference footer)"
+  ]
+}

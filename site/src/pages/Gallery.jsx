@@ -1,31 +1,37 @@
-const shots = [
-  '大堂', '大堂', '共享空間', '共享空間',
-  '安靜室', '多用途室', '兒主房', 'BB房',
-  '鏡房', '走廊', '入口', '窗外'
-]
+import { gallery } from '../content.js'
+import PageHero from '../components/PageHero.jsx'
+import MockPhoto from '../components/MockPhoto.jsx'
+import { Icon } from '../components/Icons.jsx'
 
 export default function Gallery() {
   return (
-    <div className="wrap">
-      <div className="page-head">
-        <h1>相片</h1>
-        <p>只有空間，沒有人。</p>
-      </div>
+    <>
+      <PageHero title="相片" sub="只有空間，沒有人" />
 
-      <section className="section">
-        <p>
-          我們不會在網站刊登任何人的相片。這裡只放教會空間的照片，
-          讓第一次來的朋友先看看環境。聚會與活動的相片，請看我們的 Instagram。
-        </p>
-        <div className="gallery">
-          {shots.map((label, i) => (
-            <figure key={i}>
-              <div className="room__missing">相片待加</div>
-              <figcaption>{label}</figcaption>
-            </figure>
-          ))}
-        </div>
-      </section>
-    </div>
+      <div className="wrap">
+        <section className="section" style={{ paddingTop: '1.75rem' }}>
+          <p>
+            我們不會在網站刊登任何人的相片。這裡只放教會空間的照片，
+            讓第一次來的朋友先看看環境。聚會與活動的相片，請看我們的 Instagram。
+          </p>
+
+          <div className="gallery">
+            {gallery.map((g, i) => (
+              <figure key={i}>
+                <div className="room__photo">
+                  <MockPhoto variant={g.variant} label={g.label} />
+                </div>
+                <figcaption>{g.label}</figcaption>
+              </figure>
+            ))}
+          </div>
+
+          <div className="notestrip">
+            <Icon name="info" />
+            <p>以上為空間示意圖，實際相片拍攝後會取代；刊登前會移除拍攝時間與位置資料。</p>
+          </div>
+        </section>
+      </div>
+    </>
   )
 }

@@ -1,8 +1,9 @@
 import { NavLink, Outlet, Link } from 'react-router-dom'
 import { church } from '../content.js'
+import { Mark } from './Icons.jsx'
 
 const links = [
-  { to: '/', label: '首頁', end: true },
+  { to: '/', label: '主頁', end: true },
   { to: '/about', label: '關於我們' },
   { to: '/times', label: '聚會時間' },
   { to: '/facilities', label: '設施' },
@@ -16,15 +17,22 @@ export default function Layout() {
       <a className="skip" href="#main">跳到主要內容</a>
 
       <header className="site-header">
-        <div className="site-header__inner">
-          <Link className="brand" to="/">{church.name}</Link>
+        <div className="header-inner">
+          <Link className="brand" to="/">
+            <Mark className="brand__mark" />
+            <span>
+              <span className="brand__zh">{church.nameZhFull}</span>
+              <span className="brand__en">{church.nameEn}</span>
+            </span>
+          </Link>
+
           <nav className="nav" aria-label="主選單">
             {links.map(l => (
-              <NavLink key={l.to} to={l.to} end={l.end}>
-                {l.label}
-              </NavLink>
+              <NavLink key={l.to} to={l.to} end={l.end}>{l.label}</NavLink>
             ))}
           </nav>
+
+          <a className="header-cta" href={church.mapUrl} target="_blank" rel="noreferrer">在地圖上找我們</a>
         </div>
       </header>
 
@@ -33,22 +41,31 @@ export default function Layout() {
       </main>
 
       <footer className="site-footer">
-        <div className="site-footer__inner">
-          <div>
-            <p className="label">{church.name}</p>
-            <p>{church.address}</p>
-            <p>電話：{church.phone}</p>
+        <div className="footer-inner">
+          <div className="footer-brand">
+            <Mark />
+            <div>
+              <p className="zh">{church.nameZhFull}</p>
+              <p className="en">{church.nameEn}</p>
+              <p className="en">{church.address}</p>
+            </div>
           </div>
-          <div>
-            <p className="label">連結</p>
-            <p><a href={church.mapUrl} target="_blank" rel="noreferrer">在 Google 地圖上查看</a></p>
-            <p><a href={church.instagram} target="_blank" rel="noreferrer">Instagram {church.instagramHandle}</a></p>
-            <p><Link to="/privacy">隱私與相片聲明</Link></p>
+
+          <div className="footer-slogan">
+            <p className="zh">{church.slogan}</p>
+            <p className="en">{church.sloganEn}</p>
           </div>
+
           <div>
-            <p className="label">聚會</p>
-            <p>主日崇拜 星期日上午（待填）</p>
-            <p>歡迎第一次來的朋友</p>
+            <nav className="footer-links" aria-label="頁尾選單">
+              {links.map(l => (
+                <Link key={l.to} to={l.to}>{l.label}</Link>
+              ))}
+              <a href={church.instagram} target="_blank" rel="noreferrer">Instagram</a>
+            </nav>
+            <p className="footer-note">
+              電話：{church.phone} · <Link to="/privacy">隱私與相片聲明</Link>
+            </p>
           </div>
         </div>
       </footer>

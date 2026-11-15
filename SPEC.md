@@ -67,31 +67,45 @@ Running cost for phase 1: US$0, or about US$1/month for a domain.
 Backups: the repo is the site. Photos live in the repo under `public/img`, under 200 MB total. No
 database means no backup plan that can silently fail.
 
-## 5. Theme and typography — built for older eyes
+## 5. Theme and typography — warm paper, built for older eyes
 
-No cartoon theme. The congregation skews older and reads Traditional Chinese; the design should
-disappear and let the text do the work.
+No cartoon theme. The visual language is taken from `葵涌平安福音堂網站介面合集.png` — cream paper,
+tan buttons, serif titles, one brush line — and captured as tokens in `taste/kwai-chung-pec.md`
+with measured pairs in `taste/kwai-chung-pec.json`. Read those before changing a colour.
 
-Colour tokens (body text at ≥ 7:1 contrast, WCAG AAA):
+The congregation skews older and reads Traditional Chinese; the design should disappear and let
+the text do the work.
+
+Colour tokens (body text ≥ 7:1, WCAG AAA; UI labels ≥ 4.5:1):
 
 ```
---paper     #faf7f0   warm off-white, not pure white — less glare under fluorescent light
---ink       #1b1b1b   body text
---ink-soft  #4a4a4a   secondary text, still ≥ 7:1 on paper
---accent    #2a5446   deep green — links, rules, the single highlight  (7.99:1 on paper, 7.39:1 on paper-2)
---accent-2  #843428   muted brick — used once, for the address/phone block only  (7.84:1)
+--paper      #f6efe7   cream ground, not pure white — less glare under fluorescent light
+--panel      #fffdfa   cards, header, content wells
+--sand       #f3e8de   footer band, note strips, photo placeholders
+--ink        #241a14   body text and headings          14.94:1 on paper
+--ink-soft   #4f4338   secondary text                  8.40:1 on paper, 7.94:1 on sand
+--link       #6b4520   links                           7.38:1 on paper
+--gold       #a6784d   decorative only: icons, rules, active underline
+--gold-deep  #8b5a2b   button fill; white label 5.84:1
+--line       #e4d8c9   1px dividers and card borders
 ```
+
+The reference's tan (`#a6784d`) is 3.40:1 as text and 3.88:1 under white, so it is never used for
+either — it stays decorative, and text uses the darkened gold and near-black brown instead. That
+deviation, and the two others, are recorded in the taste file.
 
 Rules:
 
 - Base font size 19px (not 16px), line-height 1.75, measure capped near 36em.
-- Headings Noto Serif TC 600, body Noto Sans TC 400 — self-hosted WOFF2 with Traditional Chinese
-  subsets. No Google Fonts request, no CDN dependency.
+- Serif (Noto Serif TC → Songti TC) for titles and names, sans (Noto Sans TC → PingFang TC) for
+  anything longer than a line. One brush face (Kaiti TC → serif) used at exactly two places: the
+  hero slogan and the footer slogan. No Google Fonts request, no CDN dependency.
 - No weights below 400. No all-caps. No letter-spacing tricks. No thin display type.
-- One accent colour. No gradients, no drop shadows, no animation, no carousel, no auto-play, no
-  information that appears only on hover.
-- Tap targets ≥ 48px. Navigation is plain large text and stays visible on mobile — no hamburger
-  menu, no hidden drawer.
+- One accent family (gold), used for icons, rules and the active underline — never a second hue.
+- No animation, no carousel, no auto-play, no hover-only information. Cards are flat with a 1px
+  border, a 14px radius and a 5%-opacity shadow.
+- Tap targets ≥ 44px. Navigation is plain large text, always visible on mobile; at 390px it takes
+  its own row and balances 3 + 3. No hamburger.
 - Photos get generous whitespace and a caption set in body-size text.
 - `<html lang="zh-Hant">`, a skip-to-content link, and real `alt` text on every photo.
 - A print stylesheet, because someone will print the address page and take it to a friend.

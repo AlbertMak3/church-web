@@ -35,8 +35,8 @@ conversation has cooled.
                        two buttons: 地圖 · Instagram
 /about       關於我們   信仰 (5-6 short points), 歷史, 願景
 /times       聚會時間   Sunday worship, prayer meeting, fellowship table (day / time / name)
-/facilities  設施       the seven rooms: one photo each, capacity, one plain sentence
-/gallery     相片       設施 photos only — no people, no faces
+/facilities  設施       the seven rooms and extra space views: one photo each, capacity,
+                       one plain sentence; no people, no faces
 /contact     聯絡我們   address, phone, Google Maps link + embedded map, Instagram,
                        building access (which lift, which floor, which door after hours, parking)
 /privacy     隱私聲明   what we publish, what we never publish, takedown contact
@@ -152,7 +152,7 @@ Rules:
 
 1. Repo, HTML skeleton, CSS tokens, shared header/footer, seven page shells
 2. Copy: 首頁, 關於我們, 聚會時間 — real text, not placeholder
-3. Photos: shoot, strip EXIF, resize, build 設施 and 相片
+3. Photos: shoot, strip EXIF, resize, build 設施（連空間相片）
 4. 聯絡我們 and 隱私聲明; verify the map link on a real phone
 5. Cloudflare Pages, deploy, review on a phone and on an old tablet
 6. Show the church, collect corrections, iterate on copy
@@ -175,3 +175,4 @@ Phase 3 — 3D facility tour (separate repo), AI cartoon art, English locale.
 | 2026-11-15 | No cartoon theme | Church's own preference; illustration deferred to phase 3 |
 | 2026-11-15 | 19px base type, 7:1 contrast, no animation | Congregation skews older; legibility beats style |
 | 2026-11-15 | Booking parked, not deleted | The design is sound; the timing and the trust are not |
+| 2026-11-15 | Merge 相片 into 設施; `/gallery` redirects | Both pages served the same purpose: showing the church's rooms without people |

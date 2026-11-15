@@ -1,13 +1,12 @@
 import { NavLink, Outlet, Link } from 'react-router-dom'
 import { church } from '../content.js'
-import { Mark } from './Icons.jsx'
+import { Mark, Icon } from './Icons.jsx'
 
 const links = [
   { to: '/', label: '主頁', end: true },
   { to: '/about', label: '關於我們' },
   { to: '/times', label: '聚會時間' },
   { to: '/facilities', label: '設施' },
-  { to: '/gallery', label: '相片' },
   { to: '/contact', label: '聯絡我們' }
 ]
 
@@ -19,9 +18,12 @@ export default function Layout() {
       <header className="site-header">
         <div className="header-inner">
           <Link className="brand" to="/">
-            <Mark className="brand__mark" />
-            <span>
-              <span className="brand__zh">{church.nameZhFull}</span>
+            <span className="brand__seal"><Mark className="brand__mark" /></span>
+            <span className="brand__type">
+              <span className="brand__zh">
+                <span>{church.nameZh}</span>
+                <span className="brand__zh-sub">（擎天堂）</span>
+              </span>
               <span className="brand__en">{church.nameEn}</span>
             </span>
           </Link>
@@ -32,7 +34,10 @@ export default function Layout() {
             ))}
           </nav>
 
-          <a className="header-cta" href={church.mapUrl} target="_blank" rel="noreferrer">在地圖上找我們</a>
+          <a className="header-cta" href={church.mapUrl} target="_blank" rel="noreferrer">
+            <Icon name="pin" className="header-cta__icon" />
+            <span>聚會地點</span>
+          </a>
         </div>
       </header>
 
@@ -43,11 +48,14 @@ export default function Layout() {
       <footer className="site-footer">
         <div className="footer-inner">
           <div className="footer-brand">
-            <Mark />
+            <span className="footer-brand__seal"><Mark /></span>
             <div>
               <p className="zh">{church.nameZhFull}</p>
               <p className="en">{church.nameEn}</p>
-              <p className="en">{church.address}</p>
+              <p className="footer-contact">
+                {church.address}<br />
+                {church.phone} · 傳真 {church.fax} · <a href={`mailto:${church.email}`}>{church.email}</a>
+              </p>
             </div>
           </div>
 
@@ -56,15 +64,16 @@ export default function Layout() {
             <p className="en">{church.sloganEn}</p>
           </div>
 
-          <div>
+          <div className="footer-nav">
             <nav className="footer-links" aria-label="頁尾選單">
               {links.map(l => (
                 <Link key={l.to} to={l.to}>{l.label}</Link>
               ))}
-              <a href={church.instagram} target="_blank" rel="noreferrer">Instagram</a>
             </nav>
             <p className="footer-note">
-              電話：{church.phone} · <Link to="/privacy">隱私與相片聲明</Link>
+              <Link to="/privacy">隱私與相片聲明</Link>
+              <span aria-hidden="true"> · </span>
+              <Link to="/privacy#photo-credits">相片來源</Link>
             </p>
           </div>
         </div>

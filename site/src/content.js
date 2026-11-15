@@ -1,16 +1,18 @@
 // Single source of placeholder content. Replace every （待填） before launch.
 
-const ADDRESS = '地址（待填）'
+const ADDRESS = '九龍長沙灣瓊林街111號擎天廣場31樓'
 
 export const church = {
   nameZh: '葵涌平安福音堂',
   nameZhFull: '葵涌平安福音堂（擎天堂）',
-  nameEn: 'Kwai Chung PEC (King’s Tower Church)',
+  nameEn: 'Kwai Chung Peace Evangelical Centre',
   slogan: '願平安與你同在',
   sloganEn: 'May the Peace of God be with you',
   tagline: '同心敬拜 · 彼此建立 · 見證基督',
   address: ADDRESS,
-  phone: '電話（待填）',
+  phone: '+852 2487 9183',
+  fax: '2427-5750',
+  email: 'kwc@hkpec.org',
   instagram: 'https://www.instagram.com/',
   instagramHandle: '@handle（待填）',
   mapUrl: `https://maps.google.com/?q=${encodeURIComponent(ADDRESS)}`
@@ -59,3 +61,34 @@ export const quickLinks = [
   { to: '/facilities', icon: 'people', title: '設施', sub: '看看我們的空間' },
   { to: '/contact', icon: 'heart', title: '聯絡我們', sub: '歡迎與我們聯絡' }
 ]
+
+// Warm-light photography cut from the church's own mood board
+// (教會網站暖光背景拼貼.png, eight panels). Each panel is exported at 900 / 1400 /
+// 2000 px wide so the browser picks one per viewport. These are design stand-ins and
+// get replaced one by one when the church supplies its own room photographs;
+// the wording that says so lives on /privacy#photo-credits.
+const panel = (name, w, h) => ({
+  src: `/img/${name}-1400.webp`,
+  srcSet: `/img/${name}-900.webp 900w, /img/${name}-1400.webp 1400w, /img/${name}-2000.webp 2000w`,
+  width: w,
+  height: h
+})
+
+export const photos = {
+  // 1 — lit cross on a wooden wall: home hero
+  crossWall: { ...panel('cross-wall', 2000, 685), alt: '木牆上一座透著暖光的十字架，前景是散焦的綠葉' },
+  // 2 — white dove on a wooden surface: about page, arch inset
+  doveWood: { ...panel('dove-wood', 2000, 688), alt: '木桌上一隻白鴿擺設，背景是陽光下的教會內貌', focus: '88% 50%' },
+  // 3 — church building exterior: about page hero
+  exterior: { ...panel('church-exterior', 2000, 592), alt: '教會大樓外牆上的十字架與教會名稱，左邊是樹影' },
+  // 4 — open bible before a wooden cross: meeting times hero
+  bibleCross: { ...panel('bible-cross', 2000, 594), alt: '木桌上翻開的聖經，背後是木十字架與小盆栽' },
+  // 5 — eucalyptus and leaf shadows: gallery hero, home section photo
+  greeneryLight: { ...panel('greenery-light', 2000, 496), alt: '尤加利葉與牆上柔和的葉影' },
+  // 6 — wooden sanctuary, rows of chairs: facilities hero
+  sanctuaryWood: { ...panel('sanctuary-wood', 2000, 498), alt: '禮堂內一排排木椅，遠處是十字架' },
+  // 7 — cream panel with a faint dove line drawing: decorative background
+  doveLine: { ...panel('dove-line', 2000, 446), alt: '米色底上線條畫成的鴿子' },
+  // 8 — baby’s breath in window light: contact hero
+  whiteFlowers: { ...panel('white-flowers', 2000, 447), alt: '窗邊陽光下的白色滿天星' }
+}

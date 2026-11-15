@@ -28,6 +28,8 @@ export function Icon({ name, className = '' }) {
       return <svg {...common}><Path d="M12 21s6.5-6.1 6.5-10.5a6.5 6.5 0 1 0-13 0C5.5 14.9 12 21 12 21z" /><Path d="M12 12.6a2.2 2.2 0 1 0 0-4.4 2.2 2.2 0 0 0 0 4.4z" /></svg>
     case 'phone':
       return <svg {...common}><Path d="M6.5 3.5h3l1.5 4-2 1.5a11 11 0 0 0 6 6l1.5-2 4 1.5v3a2 2 0 0 1-2.2 2A16.5 16.5 0 0 1 4.5 5.7 2 2 0 0 1 6.5 3.5z" /></svg>
+    case 'fax':
+      return <svg {...common}><Path d="M7 8.5V3.5h10v5M5 8.5h14v7H5zM8 15.5h8v5H8zM8 12h.1M12 12h.1M16 12h.1M17 15.5v-2h2v5h-2" /></svg>
     case 'map':
       return <svg {...common}><Path d="M9 4 3 6.5v13L9 17l6 2.5 6-2.5v-13L15 6.5 9 4zM9 4v13M15 6.5v13" /></svg>
     case 'mail':

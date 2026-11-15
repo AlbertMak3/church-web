@@ -1,10 +1,9 @@
-import { Routes, Route } from 'react-router-dom'
+import { Routes, Route, Navigate } from 'react-router-dom'
 import Layout from './components/Layout.jsx'
 import Home from './pages/Home.jsx'
 import About from './pages/About.jsx'
 import Times from './pages/Times.jsx'
 import Facilities from './pages/Facilities.jsx'
-import Gallery from './pages/Gallery.jsx'
 import Contact from './pages/Contact.jsx'
 import Privacy from './pages/Privacy.jsx'
 import NotFound from './pages/NotFound.jsx'
@@ -17,7 +16,7 @@ export default function App() {
         <Route path="/about" element={<About />} />
         <Route path="/times" element={<Times />} />
         <Route path="/facilities" element={<Facilities />} />
-        <Route path="/gallery" element={<Gallery />} />
+        <Route path="/gallery" element={<Navigate to="/facilities" replace />} />
         <Route path="/contact" element={<Contact />} />
         <Route path="/privacy" element={<Privacy />} />
         <Route path="*" element={<NotFound />} />

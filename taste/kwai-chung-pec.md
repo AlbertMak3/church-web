@@ -22,9 +22,11 @@ Applies to: the phase 1 church site in `../site`.
 | Hairline | `#ddd0c2` | row dividers, card borders | 1px rules |
 
 Photo tones inside the hero average `#a6784d`–`#c4a587`; the images are the only place the palette goes
-saturated, and they are the only place that carries no text except white overlay copy.
+saturated. Overlay copy never sits directly on a photograph: a cream scrim (`rgba(252,247,240,.97)` at the
+copy edge, fading to 0 by 78%) keeps the words on near-white paper, so headings stay ink-on-paper and the
+photograph stays a photograph.
 
-Shipped site tokens differ from the reference in three measurable places, each because the reference
+Shipped site tokens differ from the reference in four measurable places, each because the reference
 value failed a target:
 
 | Token | Reference | Shipped | Reason |
@@ -32,6 +34,7 @@ value failed a target:
 | Accent text | `#a6784d` (3.40:1 on paper) | `#6b4520` (7.38:1) | tan fails 7:1 for text; it stays decorative |
 | Button fill | `#af8250` (3.88:1 with white) | `#8b5a2b` (5.84:1) | white on the lighter tan is unreadable at small sizes |
 | Secondary text | `#5b4e44` (6.65:1 on sand) | `#4f4338` (7.94:1) | footer band is darker than the page |
+| Hero overlay | white copy on a dark ink veil | cream scrim, ink copy | the warm photographs are too bright for white text at heading sizes; a dark veil turns them grey and costs the warmth the site is built on |
 
 ### Type
 

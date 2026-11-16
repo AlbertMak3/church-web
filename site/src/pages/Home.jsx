@@ -1,10 +1,13 @@
 import { Link } from 'react-router-dom'
-import { church, quickLinks, photos } from '../content.js'
+import { quickLinks, photos } from '../content.js'
+import { useI18n, Rich } from '../i18n/index.jsx'
 import Photo from '../components/Photo.jsx'
 import ServiceList from '../components/ServiceList.jsx'
 import { Icon } from '../components/Icons.jsx'
 
 export default function Home() {
+  const { locale, t, lp, tr } = useI18n()
+
   return (
     <>
       <section className="hero">
@@ -19,25 +22,25 @@ export default function Home() {
         <div className="hero__veil" />
         <div className="hero__inner">
           <div className="hero__copy">
-            <p className="hero__kicker"><span aria-hidden="true" />{church.nameZhFull}</p>
-            <h1 className="hero__slogan">{church.slogan}</h1>
-            <p className="hero__tagline">{church.tagline}</p>
-            <p className="hero__name-en">{church.sloganEn}</p>
-            <Link className="hero__cta" to="/about">
-              認識我們 <Icon name="arrow" className="btn-icon" />
+            <p className="hero__kicker"><span aria-hidden="true" />{t.brand.full}</p>
+            <h1 className={`hero__slogan hero__slogan--${locale}`}>{t.home.slogan}</h1>
+            <p className="hero__tagline">{t.home.tagline}</p>
+            <p className="hero__name-en" lang={locale === 'en' ? 'zh-Hant' : 'en'}>{t.home.secondLine}</p>
+            <Link className="hero__cta" to={lp('/about')}>
+              {t.home.cta} <Icon name="arrow" className="btn-icon" />
             </Link>
           </div>
         </div>
       </section>
 
       <div className="wrap">
-        <nav className="quick" aria-label="四個入口">
+        <nav className="quick" aria-label={t.home.quickAria}>
           {quickLinks.map(q => (
-            <Link key={q.to} to={q.to}>
+            <Link key={q.to} to={lp(q.to)}>
               <span className="quick__icon-wrap"><Icon name={q.icon} className="quick__icon" /></span>
               <span className="quick__copy">
-                <span className="quick__title">{q.title}</span>
-                <span className="quick__sub">{q.sub}</span>
+                <span className="quick__title">{tr(q.title)}</span>
+                <span className="quick__sub">{tr(q.sub)}</span>
               </span>
             </Link>
           ))}
@@ -45,17 +48,19 @@ export default function Home() {
 
         <section className="section home-schedule">
           <header className="section-heading">
-            <p className="eyebrow">每週聚會</p>
-            <h2>聚會時間</h2>
-            <p className="section-lead">歡迎所有弟兄姊妹及新朋友參加，一同在主裡相聚。</p>
+            <p className="eyebrow">{t.home.scheduleEyebrow}</p>
+            <h2>{t.home.scheduleHeading}</h2>
+            <p className="section-lead">{t.home.scheduleLead}</p>
           </header>
 
           <div className="schedule-layout">
             <div className="schedule-side">
-              <p className="schedule-day">主日崇拜</p>
-              <p className="schedule-time">逢星期日<br /><strong>上午 10:30</strong></p>
-              <Link className="text-link" to="/times">
-                查看全部聚會 <Icon name="arrow" className="btn-icon" />
+              <p className="schedule-day">{t.home.scheduleDay}</p>
+              <p className="schedule-time">
+                {t.home.scheduleDayMeta}<br /><strong>{t.home.scheduleTimeStrong}</strong>
+              </p>
+              <Link className="text-link" to={lp('/times')}>
+                {t.home.viewAll} <Icon name="arrow" className="btn-icon" />
               </Link>
             </div>
             <ServiceList />
@@ -64,14 +69,16 @@ export default function Home() {
 
         <section className="section split-feature">
           <div className="split-feature__copy">
-            <p className="eyebrow">第一次來</p>
-            <h2>不需要事先通知</h2>
+            <p className="eyebrow">{t.home.firstVisitEyebrow}</p>
+            <h2>{t.home.firstVisitHeading}</h2>
             <p>
-              聚會在哪一層、搭哪一部電梯、聚會時間外要按<span className="nowrap">哪一道門</span>，都寫在
-              <Link to="/contact">聯絡我們</Link>那一頁。服裝隨意，歡迎你。
+              <Rich
+                text={t.home.firstVisitBody}
+                slots={{ contactLink: <Link to={lp('/contact')}>{t.nav.items[4].label}</Link> }}
+              />
             </p>
-            <Link className="btn btn--solid" to="/contact">
-              查看交通指示 <Icon name="arrow" className="btn-icon" />
+            <Link className="btn btn--solid" to={lp('/contact')}>
+              {t.home.firstVisitCta} <Icon name="arrow" className="btn-icon" />
             </Link>
           </div>
           <figure className="photo-frame">
@@ -82,8 +89,10 @@ export default function Home() {
         <aside className="notestrip">
           <Icon name="info" />
           <p>
-            我們不會在網站刊登任何人的相片。空間的相片可以在
-            <Link to="/facilities">設施</Link>頁看到。
+            <Rich
+              text={t.home.noteBody}
+              slots={{ facilitiesLink: <Link to={lp('/facilities')}>{t.nav.items[3].label}</Link> }}
+            />
           </p>
         </aside>
       </div>

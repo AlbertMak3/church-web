@@ -13,6 +13,10 @@ export default defineConfig(({ mode }) => {
 
   return {
     plugins: [react()],
+    // A hosted demo lives under a sub-path: GitHub Pages serves a project site
+    // at /church-web/, so CI builds with VITE_BASE=/church-web/. Local dev and
+    // plain `npm run build` keep the root base.
+    base: env.VITE_BASE || '/',
     build: { outDir: 'dist' },
     server: { allowedHosts }
   }

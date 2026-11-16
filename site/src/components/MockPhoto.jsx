@@ -2,6 +2,11 @@
 // shots exist. Warm interiors only: window light, furniture, no people.
 // Replace <MockPhoto variant="hall" /> with <img src="/img/hall-1.jpg" alt="..." />
 // when the photographs arrive.
+//
+// The label comes from content.js (already translated there): every drawing is
+// announced as the room it stands in for, never as its own generic caption.
+
+import { useI18n } from '../i18n/index.jsx'
 
 const T = {
   wall: '#e7d8c6',
@@ -16,9 +21,9 @@ const T = {
   green: '#8d9c7c'
 }
 
-function Frame({ children, label }) {
+function Frame({ children, alt }) {
   return (
-    <svg viewBox="0 0 400 300" role="img" aria-label={label} preserveAspectRatio="xMidYMid slice" className="mock">
+    <svg viewBox="0 0 400 300" role="img" aria-label={alt} preserveAspectRatio="xMidYMid slice" className="mock">
       <rect width="400" height="300" fill={T.wall} />
       {children}
       <rect width="400" height="300" fill="url(#vignette)" opacity=".35" />
@@ -52,12 +57,13 @@ const Chairs = ({ y = 232, n = 4, from = 90, step = 54, w = 30, h = 26 }) => (
 )
 
 export default function MockPhoto({ variant = 'hall', label }) {
-  const alt = label || '教會空間示意圖'
+  const { t } = useI18n()
+  const alt = label || t.facilities.diagramAlt
 
   switch (variant) {
     case 'hall':
       return (
-        <Frame label={`${alt}（大堂）`}>
+        <Frame alt={alt}>
           <Defs />
           <rect width="400" height="300" fill="url(#glow)" />
           {/* arched window */}
@@ -75,7 +81,7 @@ export default function MockPhoto({ variant = 'hall', label }) {
 
     case 'lounge':
       return (
-        <Frame label={`${alt}（共享空間）`}>
+        <Frame alt={alt}>
           <Defs />
           <rect width="400" height="300" fill="url(#glow)" />
           <rect y="220" width="400" height="80" fill={T.floor} opacity=".8" />
@@ -99,7 +105,7 @@ export default function MockPhoto({ variant = 'hall', label }) {
 
     case 'quiet':
       return (
-        <Frame label={`${alt}（安靜室）`}>
+        <Frame alt={alt}>
           <Defs />
           <rect width="400" height="300" fill="url(#glow)" />
           <rect y="226" width="400" height="74" fill={T.floor} opacity=".8" />
@@ -117,7 +123,7 @@ export default function MockPhoto({ variant = 'hall', label }) {
 
     case 'multi':
       return (
-        <Frame label={`${alt}（多用途室）`}>
+        <Frame alt={alt}>
           <Defs />
           <rect width="400" height="300" fill="url(#glow)" />
           <rect y="214" width="400" height="86" fill={T.floor} opacity=".8" />
@@ -132,7 +138,7 @@ export default function MockPhoto({ variant = 'hall', label }) {
 
     case 'kids':
       return (
-        <Frame label={`${alt}（兒主房）`}>
+        <Frame alt={alt}>
           <Defs />
           <rect width="400" height="300" fill="url(#glow)" />
           <rect y="210" width="400" height="90" fill={T.floor} opacity=".75" />
@@ -149,7 +155,7 @@ export default function MockPhoto({ variant = 'hall', label }) {
 
     case 'baby':
       return (
-        <Frame label={`${alt}（BB房）`}>
+        <Frame alt={alt}>
           <Defs />
           <rect width="400" height="300" fill="url(#glow)" />
           <rect y="222" width="400" height="78" fill={T.floor} opacity=".72" />
@@ -166,7 +172,7 @@ export default function MockPhoto({ variant = 'hall', label }) {
 
     case 'mirror':
       return (
-        <Frame label={`${alt}（鏡房）`}>
+        <Frame alt={alt}>
           <Defs />
           <rect width="400" height="300" fill="url(#glow)" />
           <rect y="230" width="400" height="70" fill={T.floor2} opacity=".7" />
@@ -182,7 +188,7 @@ export default function MockPhoto({ variant = 'hall', label }) {
 
     case 'corridor':
       return (
-        <Frame label={`${alt}（走廊）`}>
+        <Frame alt={alt}>
           <Defs />
           <rect width="400" height="300" fill={T.wall2} />
           <polygon points="0,300 400,300 320,190 80,190" fill={T.floor} opacity=".8" />
@@ -195,7 +201,7 @@ export default function MockPhoto({ variant = 'hall', label }) {
 
     case 'entrance':
       return (
-        <Frame label={`${alt}（入口）`}>
+        <Frame alt={alt}>
           <Defs />
           <rect width="400" height="300" fill="url(#glow)" />
           <rect y="236" width="400" height="64" fill={T.floor} opacity=".75" />
@@ -210,7 +216,7 @@ export default function MockPhoto({ variant = 'hall', label }) {
     case 'window':
     default:
       return (
-        <Frame label={`${alt}（窗外）`}>
+        <Frame alt={alt}>
           <Defs />
           <rect width="400" height="300" fill="url(#glow)" />
           <rect x="70" y="50" width="260" height="180" rx="6" fill={T.light} opacity=".95" />

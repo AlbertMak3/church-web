@@ -5,3 +5,6 @@ dist/
 .env
 .env.local
 .taste-skill/
+
+# Raw camera originals; optimized webp copies live in site/public/img
+picture resource/

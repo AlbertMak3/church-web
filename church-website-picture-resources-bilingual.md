@@ -5,6 +5,13 @@ Keep the website wording, but use only wording and photographs of facilities wit
 
 保留網站文字內容，但只使用文字，以及沒有人物的設施照片。
 
+This list covers photographs only. The words that have to be collected from the church alongside
+them — who supplies each line, who approves it, and what the code is still missing — are in
+`church-website-wording-resources-bilingual.md`.
+
+本清單只涵蓋照片。需要同時向教會收集的文字（每句由誰提供、由誰核准、程式內仍欠甚麼），
+見 `church-website-wording-resources-bilingual.md`。
+
 ## Overall Rule / 整體原則
 
 **Use words and photographs of facilities without people only.**<br>

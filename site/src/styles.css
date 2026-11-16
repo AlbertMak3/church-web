@@ -587,6 +587,9 @@ main { display: block; padding-bottom: 1rem; }
 .crumbs {
   display: flex;
   flex-wrap: wrap;
+  /* Center the row so the 44px-tall link and the plain-text items share one
+     baseline instead of the text items hugging the top of the stretched row. */
+  align-items: center;
   gap: .35rem;
   padding-top: .55rem;
   color: var(--ink-soft);

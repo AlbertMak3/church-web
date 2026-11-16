@@ -1026,9 +1026,9 @@ main { display: block; padding-bottom: 1rem; }
   to   { transform: none; }
 }
 
-html.route-arriving main { animation: route-arrive .46s var(--ease-enter); }
+html.route-arriving main { animation: route-arrive .68s var(--ease-enter); }
 html.route-arriving main .hero__photo,
-html.route-arriving main .page-hero__photo { animation: route-photo-settle 1.1s var(--ease-enter); }
+html.route-arriving main .page-hero__photo { animation: route-photo-settle 1.6s var(--ease-enter); }
 
 @media (prefers-reduced-motion: reduce) {
   html { scroll-behavior: auto; }

@@ -7,7 +7,9 @@ import { useLocation } from 'react-router-dom'
    the browser's own restoration. The motion itself lives in styles.css
    (`route-arrive`, `route-photo-settle`, keyed on html.route-arriving). */
 
-const ARRIVAL_MS = 1300
+/* Must outlast the longest arrival animation in styles.css (the hero photo
+   settle), or the class is dropped mid-motion and the settle snaps. */
+const ARRIVAL_MS = 1900
 const HOLD_FRAMES = 6
 
 const reduced = () =>

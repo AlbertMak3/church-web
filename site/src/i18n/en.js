@@ -187,7 +187,7 @@ export default {
 
   meta: {
     '/': {
-      title: "葵涌平安福音堂 (King's Tower) · English",
+      title: "Kwai Chung Peace Evangelical Centre (King's Tower)",
       description: "Kwai Chung Peace Evangelical Centre (King's Tower): service times, address, facilities and an introduction to the church."
     },
     '/about': {

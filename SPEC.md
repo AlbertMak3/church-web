@@ -46,7 +46,25 @@ Every page shows the address and phone number in the footer. An elderly visitor 
 to hunt for where the church is or how to call it.
 
 Out of scope for phase 1, stated so nobody drifts: booking, weekly PDF archive, news posts,
-admin panel, login, search, English, 3D tour, illustration, online giving.
+admin panel, login, search, 3D tour, illustration, online giving.
+
+## 3a. The English edition
+
+The site is bilingual from the start, because a district church in Kwai Chung meets people who
+read English — visitors, the children of members, and anyone who found the address on a map.
+
+- Chinese stays at the root (`/`, `/about`, `/times`, `/facilities`, `/contact`, `/privacy`).
+  English lives under `/en` (`/en/about` …). Existing Chinese URLs never move.
+- Both editions are one set of page components. Copy lives in `site/src/i18n/zh.js` and
+  `site/src/i18n/en.js`, keyed identically; structured data (service times, rooms, links, photo
+  alt text) carries `{ zh, en }` pairs in `site/src/content.js`. A page reads `useI18n().t` and
+  builds links with `lp('/about')`, which adds the prefix in English.
+- A quiet pill in the header switches language and stays on the same page. The choice is
+  remembered, so opening the bare domain later returns the reader to their language.
+- `<html lang>` (`zh-Hant` / `en`), the title, the description and the `hreflang`/canonical set
+  follow the page and the locale. The Chinese pages keep their Chinese titles.
+- The English edition is not a machine translation: the copy is written, and the placeholders are
+  marked `(To be supplied)` where the Chinese has `（待填）`.
 
 ## 4. Tech
 
@@ -107,7 +125,8 @@ Rules:
 - Tap targets ≥ 44px. Navigation is plain large text, always visible on mobile; at 390px it takes
   its own row and balances 3 + 3. No hamburger.
 - Photos get generous whitespace and a caption set in body-size text.
-- `<html lang="zh-Hant">`, a skip-to-content link, and real `alt` text on every photo.
+- `<html lang>` set per locale (`zh-Hant` / `en`), a skip-to-content link, and real `alt` text on
+  every photo, written in the language of the page.
 - A print stylesheet, because someone will print the address page and take it to a friend.
 
 ## 6. Photos and privacy
@@ -162,7 +181,7 @@ Rules:
 Phase 2 — booking, 週報 archive, admin: fully designed in PHASE-2-BOOKING.md. Needs a server, a
 database and an ongoing ops commitment. Propose only after phase 1 is live and trusted.
 
-Phase 3 — 3D facility tour (separate repo), AI cartoon art, English locale.
+Phase 3 — 3D facility tour (separate repo), AI cartoon art.
 
 ## 11. Decision log
 
@@ -176,3 +195,4 @@ Phase 3 — 3D facility tour (separate repo), AI cartoon art, English locale.
 | 2026-11-15 | 19px base type, 7:1 contrast, no animation | Congregation skews older; legibility beats style |
 | 2026-11-15 | Booking parked, not deleted | The design is sound; the timing and the trust are not |
 | 2026-11-15 | Merge 相片 into 設施; `/gallery` redirects | Both pages served the same purpose: showing the church's rooms without people |
+| 2026-11-16 | English edition under `/en`, one set of pages | Chinese URLs stay put; a written English copy serves visitors and the members' families without a second site to maintain |

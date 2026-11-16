@@ -6,13 +6,13 @@ import RouteScroll from './RouteScroll.jsx'
 
 export default function Layout() {
   const { locale, t, lp, tr } = useI18n()
-  const { pathname } = useLocation()
+  const { pathname, search, hash } = useLocation()
 
   useDocumentLocale()
 
   // The switch keeps the reader on the page they were reading, in the other language.
   const nextLocale = otherLocale(locale)
-  const switchTo = localePath(nextLocale, stripLocale(pathname))
+  const switchTo = `${localePath(nextLocale, stripLocale(pathname))}${search}${hash}`
 
   return (
     <>

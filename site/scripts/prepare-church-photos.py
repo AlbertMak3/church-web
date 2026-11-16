@@ -26,7 +26,7 @@ becomes the file name and the key used in content.js.
 import argparse
 import os
 
-from PIL import Image, ImageFilter, ImageOps
+from PIL import Image, ImageEnhance, ImageFilter
 
 REPO = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 SRC_DIR = os.path.join(REPO, 'picture resource')
@@ -41,8 +41,15 @@ WIDTHS = (900, 1400, 2000)
 
 
 def tone(image):
-    """Lift the photo out of its flat exposure without over-cooking it."""
-    image = ImageOps.autocontrast(image, cutoff=(0.25, 0.05))
+    """Lift the photo out of its flat exposure without over-cooking it.
+
+    autocontrast is deliberately not used: the frame is almost entirely pale
+    wall, so stretching the histogram maps that wall to mid-grey and the photo
+    turns dark and muddy. A pivot-around-mid-grey contrast bump keeps the
+    scene's brightness and only separates the raised lettering from the wall.
+    """
+    image = ImageEnhance.Contrast(image).enhance(1.14)
+    image = ImageEnhance.Color(image).enhance(1.04)
     return image.filter(ImageFilter.UnsharpMask(radius=2, percent=45, threshold=4))
 
 

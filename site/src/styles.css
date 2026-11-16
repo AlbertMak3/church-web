@@ -25,6 +25,7 @@
   --radius: 16px;
   --radius-lg: 24px;
   --shadow: 0 20px 50px -36px rgba(54, 36, 22, .48);
+  --ease-enter: cubic-bezier(.22, 1, .36, 1);
 }
 
 *, *::before, *::after { box-sizing: border-box; }
@@ -1013,9 +1014,28 @@ main { display: block; padding-bottom: 1rem; }
   .h1, .hero__slogan { font-size: 2.55rem; }
 }
 
+/* ---------- arrival: a sub-page opens at its top and settles into place ---------- */
+
+@keyframes route-arrive {
+  from { opacity: 0; transform: translate3d(0, 18px, 0); }
+  to   { opacity: 1; transform: none; }
+}
+
+@keyframes route-photo-settle {
+  from { transform: scale(1.045); }
+  to   { transform: none; }
+}
+
+html.route-arriving main { animation: route-arrive .46s var(--ease-enter); }
+html.route-arriving main .hero__photo,
+html.route-arriving main .page-hero__photo { animation: route-photo-settle 1.1s var(--ease-enter); }
+
 @media (prefers-reduced-motion: reduce) {
   html { scroll-behavior: auto; }
   *, *::before, *::after { animation-duration: .01ms !important; animation-iteration-count: 1 !important; transition-duration: .01ms !important; }
+  html.route-arriving main,
+  html.route-arriving main .hero__photo,
+  html.route-arriving main .page-hero__photo { animation: none; }
   .photo-frame:hover img, .gallery__item:hover .gallery__photo svg { transform: none; }
 }
 

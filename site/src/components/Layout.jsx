@@ -1,6 +1,7 @@
-import { NavLink, Outlet, Link } from 'react-router-dom'
+import { NavLink, Outlet, Link, useLocation } from 'react-router-dom'
 import { church } from '../content.js'
 import { Mark, Icon } from './Icons.jsx'
+import RouteScroll from './RouteScroll.jsx'
 
 const links = [
   { to: '/', label: '主頁', end: true },
@@ -11,8 +12,11 @@ const links = [
 ]
 
 export default function Layout() {
+  const { pathname } = useLocation()
+
   return (
     <>
+      <RouteScroll />
       <a className="skip" href="#main">跳到主要內容</a>
 
       <header className="site-header">
@@ -41,7 +45,7 @@ export default function Layout() {
         </div>
       </header>
 
-      <main id="main">
+      <main id="main" key={pathname}>
         <Outlet />
       </main>
 

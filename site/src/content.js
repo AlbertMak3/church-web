@@ -19,8 +19,9 @@ export const church = {
   instagram: 'https://www.instagram.com/',
   instagramHandle: { zh: '@handle（待填）', en: '@handle (to be confirmed)' },
   address: ADDRESS,
-  // The English address is what Google resolves reliably, in either locale.
-  mapUrl: `https://maps.google.com/?q=${encodeURIComponent(ADDRESS.en)}`
+  // The church's own Google Maps place link (resolves to the 31/F place ID, in
+  // either locale). Tracking params from the share sheet are stripped.
+  mapUrl: 'https://maps.app.goo.gl/Xuz2VJFTttjzhW146'
 }
 
 // The three weekly meetings. `icon` is an Icons.jsx name.

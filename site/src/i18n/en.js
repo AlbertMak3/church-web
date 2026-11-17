@@ -22,7 +22,6 @@ export default {
     crumbsAria: 'Breadcrumb',
     crumbSeparator: '/',
     home: 'Home',
-    locationCta: 'Find us',
     items: [
       { to: '/', label: 'Home', end: true },
       { to: '/about', label: 'About us' },

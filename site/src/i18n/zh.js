@@ -24,7 +24,6 @@ export default {
     crumbsAria: '麵包屑',
     crumbSeparator: '／',
     home: '主頁',
-    locationCta: '聚會地點',
     items: [
       { to: '/', label: '主頁', end: true },
       { to: '/about', label: '關於我們' },

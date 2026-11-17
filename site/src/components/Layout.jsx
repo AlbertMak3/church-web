@@ -1,7 +1,7 @@
 import { NavLink, Outlet, Link, useLocation } from 'react-router-dom'
 import { church } from '../content.js'
 import { useI18n, useDocumentLocale, localePath, stripLocale, otherLocale, rememberLocale } from '../i18n/index.jsx'
-import { Mark, Icon } from './Icons.jsx'
+import { Mark } from './Icons.jsx'
 import RouteScroll from './RouteScroll.jsx'
 
 export default function Layout() {
@@ -45,10 +45,6 @@ export default function Layout() {
             >
               {t.lang.switchLabel}
             </Link>
-            <a className="header-cta" href={church.mapUrl} target="_blank" rel="noreferrer">
-              <Icon name="pin" className="header-cta__icon" />
-              <span>{t.nav.locationCta}</span>
-            </a>
           </div>
         </div>
       </header>

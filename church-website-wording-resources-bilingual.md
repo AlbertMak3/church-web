@@ -1,12 +1,10 @@
 # Church Website Wording Resource Checklist
 # 教會網站文字資源清單
 
-The picture list says what to photograph. This list says what has to be written down, whose words
+This list says what has to be written down, whose words
 they are, and who signs them off. Collect both in the same visit.
 
 圖片清單說明要拍甚麼；這份清單說明要抄錄甚麼文字、由誰提供、由誰核准。兩份文件在同一趟訪問中一併收集。
-
-Companion to `church-website-picture-resources-bilingual.md`.
 
 ## Overall Rule / 整體原則
 

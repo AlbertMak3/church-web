@@ -57,7 +57,7 @@ export default function Home() {
             <div className="schedule-side">
               <p className="schedule-day">{t.home.scheduleDay}</p>
               <p className="schedule-time">
-                {t.home.scheduleDayMeta}<br /><strong>{t.home.scheduleTimeStrong}</strong>
+                <strong>{t.home.scheduleTimeStrong}</strong>
               </p>
               <Link className="text-link" to={lp('/times')}>
                 {t.home.viewAll} <Icon name="arrow" className="btn-icon" />

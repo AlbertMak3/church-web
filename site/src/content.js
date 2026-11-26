@@ -24,15 +24,29 @@ export const church = {
   mapUrl: 'https://maps.app.goo.gl/Xuz2VJFTttjzhW146'
 }
 
-// The three weekly meetings. `icon` is an Icons.jsx name.
+
 export const times = [
   {
     id: 'worship',
+    day: { zh: '每逢星期日', en: 'Every Sunday' },
     icon: 'chapel',
-    name: { zh: '主日崇拜', en: 'Sunday Worship' },
-    day: { zh: '逢星期日', en: 'Every Sunday' },
-    time: { zh: '上午 10:30 – 12:00', en: '10:30 am – 12:00 pm' },
-    venue: { zh: '本堂大禮堂', en: 'Main hall' }
+    name: { zh: 'A 堂（成人崇拜）', en: 'Service A (Adult Worship)' },
+    time: { zh: '上午 09:30–11:05', en: '9:30–11:05 am' },
+    note: { zh: '講道後擘餅，期間設有會眾分享時段。', en: 'The breaking of bread follows the sermon and includes time for the congregation to share.' }
+  },
+  {
+    id: 'worship-b',
+    day: { zh: '每逢星期日', en: 'Every Sunday' },
+    icon: 'chapel',
+    name: { zh: 'B 堂', en: 'Service B' },
+    time: { zh: '上午 11:30–中午 12:30', en: '11:30 am–12:30 pm' }
+  },
+  {
+    id: 'children',
+    day: { zh: '每逢星期日', en: 'Every Sunday' },
+    icon: 'book',
+    name: { zh: '兒童主日學', en: 'Children’s Sunday School' },
+    time: { zh: '上午 11:30–中午 12:30', en: '11:30 am–12:30 pm' }
   },
   {
     id: 'bible',

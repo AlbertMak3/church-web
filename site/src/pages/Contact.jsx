@@ -80,10 +80,10 @@ export default function Contact() {
           <div className="section-duo">
             <section className="section">
               <header className="section-heading">
-                <p className="eyebrow">{t.contact.replyEyebrow}</p>
                 <h2>{t.contact.replyHeading}</h2>
               </header>
-              <p>{t.contact.replyBody}</p>
+              <p>{t.contact.phone} <a href={`tel:${church.phone.replace(/\s/g, '')}`}>{church.phone}</a></p>
+              <p>{t.contact.email} <a href={`mailto:${church.email}`}>{church.email}</a></p>
             </section>
 
             <section className="section">

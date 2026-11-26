@@ -14,10 +14,11 @@ export default function ServiceList() {
             <div className="row__body">
               <h3 className="row__name">{tr(item.name)}</h3>
               <div className="row__details">
-                <p className="row__meta">{tr(item.day)}</p>
+                {item.day && <p className="row__meta">{tr(item.day)}</p>}
                 <p className="row__meta"><span>{tr(item.time)}</span></p>
-                <p className="row__meta row__venue">{tr(item.venue)}</p>
+                {item.venue && <p className="row__meta row__venue">{tr(item.venue)}</p>}
               </div>
+              {item.note && <p>{tr(item.note)}</p>}
             </div>
           </li>
         ))}
